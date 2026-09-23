@@ -19,6 +19,6 @@
 .client-ticker-group span{display:flex;align-items:center;gap:42px;padding:22px 42px 21px 0;font-size:14px;font-weight:600;letter-spacing:.12em;white-space:nowrap}
 .client-ticker-group span::before{content:'';width:7px;height:7px;border:1px solid currentColor;border-radius:50%;opacity:.65}
 .client-ticker:hover .client-ticker-track{animation-play-state:paused}
-@keyframes client-ticker{to{transform:translateX(-50%)}}
+@keyframes client-ticker{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 @media(max-width:760px){.client-ticker-group span{padding:17px 28px 16px 0;font-size:12px;gap:28px}.client-ticker-group span::before{width:6px;height:6px}}
 @media(prefers-reduced-motion:reduce){.client-ticker{overflow-x:auto}.client-ticker-track{animation:none}}
