@@ -66,7 +66,7 @@ const companyProfile = {
         "Помогаем внедрить изменения и сопровождаем."
       ]
     ],
-    "addressValue": "Ташкент, Яшнабадский район, ул. Махтумкули, 112, блок 6, БЦ «Platinum 2», офис 601",
+    "addressValue": "Ташкент, Яшнабадский район, ул. Махтумкули, 112, блок 6,<br><span style=\"display:inline-block\">БЦ «Platinum 2», офис 601</span>",
     "teamLabel": "Команда",
     "teamTitle": "Люди, которые отвечают<br>за результат.",
     "team": [
@@ -256,7 +256,7 @@ const companyProfile = {
         "O‘zgarishlarni joriy etishga yordam beramiz va qo‘llab-quvvatlaymiz."
       ]
     ],
-    "addressValue": "Toshkent shahri, Yashnobod tumani, Maxtumquli ko‘chasi, 112, 6-blok, «Platinum 2» biznes markazi, 601-ofis",
+    "addressValue": "Toshkent shahri, Yashnobod tumani, Maxtumquli ko‘chasi, 112, 6-blok,<br><span style=\"display:inline-block\">«Platinum 2» biznes markazi, 601-ofis</span>",
     "teamLabel": "Jamoa",
     "teamTitle": "Natija uchun javob<br>beradigan mutaxassislar.",
     "team": [
@@ -446,7 +446,7 @@ const companyProfile = {
         "We help introduce changes and provide support."
       ]
     ],
-    "addressValue": "Office 601, Platinum 2 Business Centre, Block 6, 112 Makhtumkuli Street, Yashnabad District, Tashkent",
+    "addressValue": "112 Makhtumkuli Street, Block 6, Yashnabad District, Tashkent,<br><span style=\"display:inline-block\">Platinum 2 Business Centre, Office 601</span>",
     "teamLabel": "Team",
     "teamTitle": "People accountable<br>for the result.",
     "team": [
