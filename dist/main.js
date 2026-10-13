@@ -28,7 +28,6 @@ const strip=s=>s.replace(/<br>/g,' ');
 let lang=new URLSearchParams(location.search).get('lang');
 if(!translations[lang]) lang='ru';
 function render(next, preserve=false){
- const formValues=preserve&&document.querySelector('form')?Object.fromEntries(new FormData(document.querySelector('form'))):{};
  lang=next; const t=translations[lang]; document.documentElement.lang=lang; document.title=t.title;
  document.querySelector('meta[name="description"]').content=t.description;
  document.querySelector('.skip').textContent=t.skip;
@@ -43,9 +42,8 @@ function render(next, preserve=false){
  <section class="section wrap" id="team"><div class="section-top"><div class="section-label"><span>04</span>${t.teamLabel}</div><h2>${t.teamTitle}</h2></div><div class="team-grid">${t.team.map((p,i)=>`<article class="team-member">${`<img class="team-portrait" src="./assets/team/${['bahodir-mangitov','ibrohim-ahmadkhonov','bahodir-boykabilov','sirojiddin-vahidov'][i]}.jpg" alt="${p[1]}" width="600" height="720" loading="lazy">`}<h3>${p[1].replace(/\s+/, '<br>')}</h3><p class="team-role">${p[2]}</p><p>${p[3]}</p></article>`).join('')}</div><details class="qualifications"><summary>${t.qualTitle}<span>23</span></summary><ul>${t.quals.map(q=>`<li><strong>${q[0]}</strong><span>${q[1]}</span><b>${q[2]}</b></li>`).join('')}</ul></details></section>
  <section class="section formats" id="formats"><div class="wrap"><div class="section-top"><div class="section-label"><span>05</span>${t.formatsLabel}</div><h2>${t.formatsTitle}</h2></div><div class="format-grid">${t.formats.map((f,i)=>`<article class="format-card"><span class="format-index">0${i+1}</span><h3>${f[0]}</h3><p>${f[1]}</p><strong>${f[2]}</strong></article>`).join('')}</div><p class="formats-note">${t.formatsNote}</p></div></section>
  <section class="section wrap" id="quality"><div class="section-top"><div class="section-label"><span>06</span>${t.qualityLabel}</div><h2>${t.qualityTitle}</h2></div><div class="quality-grid">${t.quality.map(q=>`<article><h3>${q[0]}</h3><p>${q[1]}</p></article>`).join('')}</div><div class="industry-block"><h3>${t.industriesTitle}</h3><ul>${t.industries.map(s=>`<li>${s}</li>`).join('')}</ul></div></section>
- <section class="contact" id="contact"><div class="wrap contact-grid"><div><p class="eyebrow">07 / ${t.contactLabel}</p><h2>${t.contactTitle}</h2><p class="contact-lead">${t.contactLead}</p><div class="contact-details"><div><small>${t.phone}</small><p><a href="tel:+998913653555">+998 91 365 35 55</a></p></div><div><small>${t.address}</small><p>${t.addressValue}</p></div></div></div><form class="form" aria-label="${t.submit}"><label class="field">${t.name}<input name="name" autocomplete="name" required maxlength="100" placeholder="${t.namePlaceholder}"></label><label class="field">${t.company}<input name="company" autocomplete="organization" maxlength="150" placeholder="${t.companyPlaceholder}"></label><label class="field full">${t.reply}<input name="email" type="email" autocomplete="email" required maxlength="254" placeholder="${t.replyPlaceholder}"></label><label class="field full">${t.service}<select name="service"><option value="">${t.choose}</option>${t.services.map((s,i)=>`<option value="${i}">${strip(s[0])}</option>`).join('')}</select></label><p class="form-note full" id="form-note">${t.note}</p><button type="submit" class="button full" aria-describedby="form-note">${t.submit}${arrow}</button><p class="form-status full" role="status" aria-live="polite"></p></form></div></section>
+ <section class="contact" id="contact"><div class="wrap contact-grid contact-call"><h2>${t.contactTitle}</h2><a class="contact-number" href="tel:+998913653555">+998 91 365 35 55</a></div></section>
  </main><footer class="footer"><div class="wrap"><div class="footer-top"><a href="#" aria-label="HASBA AUDIT"><img class="logo" src="./assets/logo.svg" width="1583" height="529" alt="HASBA AUDIT"></a><p class="footer-tag">${t.footerTag}</p></div><div class="footer-bottom"><p>© 2026 HASBA AUDIT. ${t.rights}</p><a href="#">${t.top}</a></div></div></footer>`;
- for(const [key,value] of Object.entries(formValues)){const field=document.querySelector(`[name="${key}"]`);if(field)field.value=value;}
  document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>{const l=b.dataset.lang;const u=new URL(location.href);u.searchParams.set('lang',l);history.replaceState({},'',u);render(l,true);document.querySelector(`[data-lang="${l}"]`).focus({preventScroll:true});}));
  const menu=document.querySelector('.menu-button');const mobile=document.querySelector('#mobile-nav');
  const closeMenu=()=>{menu.setAttribute('aria-expanded','false');mobile.classList.remove('open');};
@@ -53,7 +51,5 @@ function render(next, preserve=false){
  mobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
  menu.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
  mobile.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMenu();menu.focus();}});
- document.querySelectorAll('[data-service]').forEach(a=>a.addEventListener('click',()=>{document.querySelector('[name="service"]').value=a.dataset.service;}));
- document.querySelector('form').addEventListener('submit',e=>{e.preventDefault();document.querySelector('.form-status').textContent=t.demo;});
 }
 render(lang);
